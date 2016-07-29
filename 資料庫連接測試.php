@@ -1,7 +1,6 @@
-
 <?php
  header("Content-Type:text/html; charset=utf-8");
- $dbhost = 'localhost';
+ $dbhost = '54.152.25.110';
  $dbuser = 'root';
  $dbpass = 'root';
  $dbname = 'excise';
@@ -10,12 +9,11 @@ $Link = mysql_connect($dbhost, $dbuser, $dbpass);
 if (!$Link) {
 　die(' 連線失敗，輸出錯誤訊息 : ' . mysql_error());
 }
-echo ' 連線成功 ';
-
+echo ' 連線成功<br> ';
  $link_db=mysql_select_db($dbname);
 if($link_db)
 {
-        echo'資料庫連結成功';
+        echo'資料庫連結成功<br>';
 }
 else
         echo'資料庫連結失敗';
@@ -23,22 +21,23 @@ else
 $sqll="SELECT * FROM UserData";
 $sql = mysql_query($sqll) or die(mysql_error());
 $rows=mysql_num_rows($sql);
-if($rows=="")
+if($rows==" ")
         echo'查無資料';
 else
-        echo'有'.$rows.'資料';
+        echo'有'.$rows.'資料<br>';
 while($list=mysql_fetch_array($sql))
 {
-        echo .$list['UserID'].;
-        echo .$list['Name'].;
-        echo .$list['email'].;
-		echo .$list['address'].;
-		echo .$list['weight'].;
-		echo .$list['height'].;
-		echo .$list['department'].;
-		echo .$list['campusid'].;
+        echo $list['UserID'];
+        echo $list['Name'];
+        echo $list['email'];
+        echo $list['address'];
+        echo $list['weight'];
+        echo $list['height'];
+        echo $list['department'];
+        echo $list['campusid'];
 }
 mysql_free_result($sql);
 mysql_close($Link);
 ?>
+
 
